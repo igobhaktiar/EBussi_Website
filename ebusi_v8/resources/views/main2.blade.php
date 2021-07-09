@@ -3,14 +3,14 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>E-BUSI - eCommerce Kebun Inovasi</title>
+        <title>E-BUSI</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="{{asset('ezone/assets/img/favicon.png')}}">
 		
 		<!-- all css here -->
-        <link rel="stylesheet" href="{{asset('ezone/assets/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('ezone/assets/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{asset('ezone/assets/css/magnific-popup.css')}}">
         <link rel="stylesheet" href="{{asset('ezone/assets/css/animate.css')}}">
         <link rel="stylesheet" href="{{asset('ezone/assets/css/owl.carousel.min.css')}}">
@@ -42,6 +42,8 @@
                                         <li><a href="#home-area">HOME</a></li>
                                         <li><a href="#about-area">TENTANG</a></li>
                                         <li><a href="#shop-area">KATALOG</a></li>
+                                       <!-- <li><a href="#video-area">video</a></li>--->
+                                        <li><a href="#feedback-area">feedback</a></li>
                                         <li><a href="#contact-area">KONTAK</a></li>
                                     </ul>
                                 </nav>
@@ -49,69 +51,20 @@
                                   </div>
                                 <div class="furits-login-cart">
                             <div class="furits-login">
-                            @guest
-                            @if (Route::has('login'))
+                                
                                     <li>
-                                        <a href="{{ route('login') }}">Login</a>
+                                        <a href="#">Login</a>
                                     </li>
-                             @endif
-
-                             @if (Route::has('register'))
                                     <li>
-                                        <a href="{{ route('register') }}">Reg</a>
+                                        <a href="register.html">Reg</a>
                                     </li>
-                            @endif
-
-                            @else
-
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ url('profile') }}">
-                                     <i class="pe-7s-user"></i> Profile
-                                    </a>
-
-                                    <a class="dropdown-item" href="{{ url('history') }}">
-                                    <i class="pe-7s-note2"></i> Riwayat Pemesanan
-                                    </a>
-
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                       <i class="pe-7s-unlock"></i> {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
+                                
                             
                             </div>
-
                             <div class="header-cart-4 furits-cart">
-                            <?php 
-                            // Solusi : digunkan percabangan
-                            //seharusnya untuk mengakses halaman tidak diperlukan login, kecuali ingin pesan
-                                
-                            // $pesanan_utama = \App\Models\Pesanan::where('user_id', Auth::user()->id)->where ('status', 0)->first();
-
-                            // if(!empty($pesanan_utama)){
-                            //     $notif = \App\Models\PesananDetail::where('pesanan_id', $pesanan_utama->id)->count();
-                            // }
-                          
-                           ?>
-                           
-                            
-                                <a class="icon-cart" href="{{ url('check-out') }}">
+                                <a class="icon-cart" href="frontend/cart.blade.php">
                                     <i class="pe-7s-shopbag"></i>
-                                    <!-- @if(!empty($notif))
-                                        <span class="badge badge-danger">{{ $notif }}</span>
-                                        @endif -->
+                                    
                                 </a>
                                
                               
@@ -137,7 +90,9 @@
                                         <li><a href="#shop-area">KATALOG</a>
                                           
                                         </li>
-                                       
+                                        <li><a href="#feedback-area">FEEDBACK</a>
+                                           
+                                        </li>
                                         <li><a href="#contact-area"> Contact  </a></li>
                                     </ul>
                                 </nav>							
@@ -193,35 +148,125 @@
                     <h2>Katalog</h2>
                 </div>
                 <div class="product-fruit-slider owl-carousel">
-                
-                @foreach ($produks as $produk)
                     <div class="product-fruit-wrapper">
                         <div class="product-fruit-img">
-                        @if($produk->stok == 0 || $produk->stok <= 0)
-                        <div class="alert alert-warning" style="text-align: center;">Produk ini habis</div>
-                        @endif
-
-                        <!-- @if($produk->stok <= 3)
-                        <div class="alert alert-warning" style="text-align: center;">Produk segera habis</div>
-                        @endif -->
-                            <img src="{{ url('uploads') }}/{{ $produk->foto_produk}}" >
+                            <img src="{{asset('ezone/assets/img/product/furits/1.jpg')}}" >
                             <div class="product-furit-action">
-                            <!-- Berikan kondisi untuk stok menggunakan if -->
-                                <a class="furit-animate-left" title="Add To Cart" href="{{ url ('keranjang_aksi') }}/{{$produk->id}}">
+                                <a class="furit-animate-left" title="Add To Cart" href="#">
                                     <i class="pe-7s-cart"></i>
                                 </a>
-                                <a class="furit-animate-right" title="Detail" href="{{ url ('pesan') }}/{{$produk->id}}">
-                                    <i class="pe-7s-info"></i>
+                                <a class="furit-animate-right" title="Wishlist" href="#">
+                                    <i class="pe-7s-like"></i>
                                 </a>
                             </div>
                         </div>
                         <div class="product-fruit-content text-center">
-                            <h4><a href="#">{{ $produk->nama_produk }}</a></h4>
-                            <span>Rp. {{ number_format($produk->harga_produk)}}</span>
+                            <h4><a href="product-details.html">Semangka</a></h4>
+                            <span>Rp.5000/Kg</span>
                         </div>
                     </div>
-                    @endforeach
-                   
+                    <div class="product-fruit-wrapper">
+                        <div class="product-fruit-img">
+                            <img src="{{asset('ezone/assets/img/product/furits/2.jpg')}}" alt="">
+                            <div class="product-furit-action">
+                                <a class="furit-animate-left" title="Add To Cart" href="#">
+                                    <i class="pe-7s-cart"></i>
+                                </a>
+                                <a class="furit-animate-right" title="Wishlist" href="#">
+                                    <i class="pe-7s-like"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="product-fruit-content text-center">
+                            <h4><a href="product-details.html">Bayam</a></h4>
+                            <span>Rp.2000/ikat</span>
+                        </div>
+                    </div>
+                    <div class="product-fruit-wrapper">
+                        <div class="product-fruit-img">
+                            <img src="{{asset('ezone/assets/img/product/furits/4.jpg')}}" alt="">
+                            <div class="product-furit-action">
+                                <a class="furit-animate-left" title="Add To Cart" href="#">
+                                    <i class="pe-7s-cart"></i>
+                                </a>
+                                <a class="furit-animate-right" title="Wishlist" href="#">
+                                    <i class="pe-7s-like"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="product-fruit-content text-center">
+                            <h4><a href="product-details.html">Sawi</a></h4>
+                            <span>Rp.3000/ikat</span>
+                        </div>
+                    </div>
+                    <div class="product-fruit-wrapper">
+                        <div class="product-fruit-img">
+                            <img src="{{asset('ezone/assets/img/product/furits/3.jpg')}}" alt="">
+                            <div class="product-furit-action">
+                                <a class="furit-animate-left" title="Add To Cart" href="#">
+                                    <i class="pe-7s-cart"></i>
+                                </a>
+                                <a class="furit-animate-right" title="Wishlist" href="#">
+                                    <i class="pe-7s-like"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="product-fruit-content text-center">
+                            <h4><a href="product-details.html">Jeruk</a></h4>
+                            <span>Rp.7000/Kg</span>
+                        </div>
+                    </div>
+                    <div class="product-fruit-wrapper">
+                        <div class="product-fruit-img">
+                            <img src="{{asset('ezone/assets/img/product/furits/1.jpg')}}" alt="">
+                            <div class="product-furit-action">
+                                <a class="furit-animate-left" title="Add To Cart" href="#">
+                                    <i class="pe-7s-cart"></i>
+                                </a>
+                                <a class="furit-animate-right" title="Wishlist" href="#">
+                                    <i class="pe-7s-like"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="product-fruit-content text-center">
+                            <h4><a href="product-details.html">Red Bedena</a></h4>
+                            <span>$20.99</span>
+                        </div>
+                    </div>
+                    <div class="product-fruit-wrapper">
+                        <div class="product-fruit-img">
+                            <img src="{{asset('ezone/assets/img/product/furits/1.jpg')}}" alt="">
+                            <div class="product-furit-action">
+                                <a class="furit-animate-left" title="Add To Cart" href="#">
+                                    <i class="pe-7s-cart"></i>
+                                </a>
+                                <a class="furit-animate-right" title="Wishlist" href="#">
+                                    <i class="pe-7s-like"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="product-fruit-content text-center">
+                            <h4><a href="product-details.html">Olivo la deshion</a></h4>
+                            <span>$20.99</span>
+                        </div>
+                    </div>
+                    <div class="product-fruit-wrapper">
+                        <div class="product-fruit-img">
+                            <img src="{{asset('ezone/assets/img/product/furits/1.jpg')}}" alt="">
+                            <div class="product-furit-action">
+                                <a class="furit-animate-left" title="Add To Cart" href="#">
+                                    <i class="pe-7s-cart"></i>
+                                </a>
+                                <a class="furit-animate-right" title="Wishlist" href="#">
+                                    <i class="pe-7s-like"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="product-fruit-content text-center">
+                            <h4><a href="product-details.html">Freash Blackberry</a></h4>
+                            <span>$20.99</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -244,8 +289,62 @@
         </div>
         features area start -->
        
-      
-    
+        <!-- features area end -->
+        <!-- feadback area start -->
+        <div id= "feedback-area">
+        <div class="testimonials-area pt-105 pb-105">
+            <div class="container">
+                <div class="section-title-2 text-center mb-35">
+                    <h2>Testimonial</h2>
+                </div>
+                <div class="testimonials-active owl-carousel">
+                    <div class="single-testimonial-4 text-center">
+                        <img src="ezone/assets/img/icon-img/42.png" alt="">
+                        <p>This product is best product i ever get. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna.</p>
+                        <h4>Newaz Sharif  /  UI Ux Designer</h4>
+                    </div>
+                    <div class="single-testimonial-4 text-center">
+                        <img src="ezone/assets/img/icon-img/42.png" alt="">
+                        <p>This product is best product i ever get. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna.</p>
+                        <h4>Newaz Sharif  /  UI Ux Designer</h4>
+                    </div>
+                    <div class="single-testimonial-4 text-center">
+                        <img src="ezone/assets/img/icon-img/42.png" alt="">
+                        <p>This product is best product i ever get. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna.</p>
+                        <h4>Newaz Sharif  /  UI Ux Designer</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- feadback area end -->
+        <!-- subscribe area start -->
+        <div class="newsletter-area pt-105 pb-105 gray-bg-5">
+		    <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="newsletter-content">
+                            <h2>Get All Updates.</h2>
+                            <p>There are many variations of passages of available, but the majority have suffered alteration in some form,</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="newsletter-style-4">
+                            <div id="mc_embed_signup" class="subscribe-form-4 pr-70">
+                                <form action="http://devitems.us11.list-manage.com/subscribe/post?u=6bbb9b6f5827bd842d9640c82&amp;id=05d85f18ef" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                                    <div id="mc_embed_signup_scroll" class="mc-form">
+                                        <input type="email" value="" name="EMAIL" class="email" placeholder="Enter Mail Address" required>
+                                        <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                        <div class="mc-news" aria-hidden="true"><input type="text" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef" tabindex="-1" value=""></div>
+                                        <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+		    </div>
+		</div>
+        <!-- subscribe area end -->
         <!-- footer area start -->
         <footer id="contact-area" class="footer-area">
             <div class="footer-top-area pt-70 pb-35 wrapper-padding-5">
@@ -253,7 +352,9 @@
                     <div class="widget-wrapper">
                         <div class="footer-widget mb-30">
                             <a href="#home-area"><img src="ezone/assets/img/logo/2.png" alt=""></a>
-                            
+                            <div class="footer-about-2">
+                                <p>There are many variations of passages of Lorem Ipsum <br>the majority have suffered alteration in some form, by <br> injected humour</p>
+                            </div>
                         </div>
                         <div class="footer-widget mb-30">
                             <h3 class="footer-widget-title-5">Contact Info</h3>
@@ -511,7 +612,5 @@
             google.maps.event.addDomListener(window, 'load', init);
 		</script>
         <script src="ezone/assets/js/main.js"></script>
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        @include('sweet::alert')
     </body>
 </html>
