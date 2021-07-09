@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Produk;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,17 +11,22 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    
 
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index () {
-        return view ('welcome');
-        }
+    public function index()
+    {
+        //data barang yang akan ditampilkan dalam 1 halaman yakni ada 20 barang
+        //dengan menggunakan script (paginate)
+        $produks = Produk::paginate(20);
+        // untuk liat kasarannya
+        //  dd($produks); 
+        return view('welcome', compact('produks'));
+        
+        //compact digunkan untuk mengoper $produks ke view
+    }
 }
