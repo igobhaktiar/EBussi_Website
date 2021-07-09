@@ -37,4 +37,39 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function login(Request $request)
+    {
+        $this->validate($request, [
+            'username' => 'required|string', //Validasi kolom username
+            //Tapi kolom ini bisa berisi email atau username
+            'password' => 'required|string|min:6',
+        ]);
+
+        //Lakukan pengecekan, jika inputan dari username formatnya adalah email,
+        //maka kita akan melakukan proses authentication menggunakan email, selain itu 
+        //akan menggunakan username
+        $loginType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+
+        //tampung informasi loginnya, dimana kolom type pertama bersifat dinamis
+        //berdasarkan value dari pengecekan diatas
+        $login = [
+            $loginType => $request->username,
+            'password' => $request->password
+        ];
+
+        $input = $request->all();
+        //Lakukan login
+        if(auth()->attempt(array('username' => $input['username'], 'password' => $input['password'])))
+        {
+            if(auth()->user()->is_admin == 1){
+                return redirect('dashboard');
+            } elseif (auth()->user()->is_admin !== 1){
+                return redirect('/');
+            }
+        } else {
+            return redirect()->route('login')->with('error', 'Email dan Password salah');
+        }
+
+    }
 }
