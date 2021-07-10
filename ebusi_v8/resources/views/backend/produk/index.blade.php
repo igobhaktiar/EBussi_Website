@@ -17,7 +17,7 @@
                  <form method="post">
                   <h5 class="m-0 font-weight-bold text-primary">Data Produk</h5><hr>
 
-                  <a href="#"><button class="btn btn-primary" type="button">
+                  <a href="{{ url('create') }}"><button class="btn btn-primary" type="button">
                     <i class="fa fa-plus"> Tambah </i></button></a>
                   <a href="#" target="_blank"><button class="btn btn-primary" type="button">
                     <i class="fa fa-print"> Cetak Data </i></button></a>
