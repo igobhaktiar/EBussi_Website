@@ -12,8 +12,8 @@ class ProdukController extends Controller
         return view('backend.produk.index', compact('produks'));
         }
         public function create(){
-        $produks = null;
-        return view('backend.produk.create', compact('produks '));
+        $barang_produks = Produk::all();
+        return view('backend.produk.create', compact('barang_produks'));
         }
 
         public function store(Request $request){
