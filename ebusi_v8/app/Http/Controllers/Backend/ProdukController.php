@@ -11,4 +11,8 @@ class ProdukController extends Controller
         $produks = Produk::get();
         return view('backend.produk.index', compact('produks'));
         }
+        public function create(){
+        $produks = null;
+        return view('backend.produk.create', compact('produks '));
+        }
 }
