@@ -28,3 +28,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // ADMIN
 Route::get('dashboard', [App\Http\Controllers\Backend\DashboardController::class, 'index']);
+Route::get('index-read', [App\Http\Controllers\Backend\ProdukController::class, 'index']);
