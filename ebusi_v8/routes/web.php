@@ -30,3 +30,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('dashboard', [App\Http\Controllers\Backend\DashboardController::class, 'index']);
 Route::get('index-read', [App\Http\Controllers\Backend\ProdukController::class, 'index']);
 Route::get('create', [App\Http\Controllers\Backend\ProdukController::class, 'create']);
+Route::post('store', [App\Http\Controllers\Backend\ProdukController::class, 'store']);
