@@ -28,6 +28,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // ADMIN
 Route::get('dashboard', [App\Http\Controllers\Backend\DashboardController::class, 'index']);
+
+// ADMIN - Data Produk
 Route::get('index-read', [App\Http\Controllers\Backend\ProdukController::class, 'index']);
 Route::get('create', [App\Http\Controllers\Backend\ProdukController::class, 'create']);
 Route::post('store', [App\Http\Controllers\Backend\ProdukController::class, 'store']);
+
+// USER - Data Profile
+Route::get('profile', [App\Http\Controllers\ProfileController::class, 'index']);
