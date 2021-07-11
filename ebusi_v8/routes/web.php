@@ -36,3 +36,4 @@ Route::post('store', [App\Http\Controllers\Backend\ProdukController::class, 'sto
 
 // USER - Data Profile
 Route::get('profile', [App\Http\Controllers\ProfileController::class, 'index']);
+Route::post('profile', [App\Http\Controllers\ProfileController::class, 'update']);

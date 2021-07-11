@@ -208,7 +208,7 @@
                     <h4><i class="fa fa-pencil-alt"></i> Edit Profile</h4>
                  </div>
 
-                 <form method="POST" action="#">
+                 <form method="POST" action="{{ url('profile') }}">
                         @csrf
 
                         <div class="form-group row">
