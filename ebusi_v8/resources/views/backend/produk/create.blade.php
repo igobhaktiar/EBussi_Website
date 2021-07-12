@@ -33,10 +33,14 @@
                    <div class="form-group">
                    <label for="cname" class="control-label col-lg-2">Kategori <span class="required">*</span></label>
                     <div class="col-lg-10">
-                    <input type="text" class="form-control" id="kategori" name="kategori" value="{{ old('kategori') }}" />
-                  @if ($errors->has('kategori'))
-                      <span class="text-danger">{{$errors->first('kategori')}}</span>
-                   @endif
+                    <select name="kategori" id="kategori" class="form-control">
+                      @foreach ($kategori as $item)
+                         <option value="{{$item->id}}">{{$item->nama_kategori}}</option>
+                      @endforeach
+                      </select>
+                      @if ($errors->has('kategori'))
+                         <span class="text-danger">{{$errors->first('kategori')}}</span>
+                      @endif
                     </div>
                     </div>
 
