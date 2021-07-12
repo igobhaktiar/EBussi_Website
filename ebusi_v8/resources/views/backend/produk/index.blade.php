@@ -22,6 +22,21 @@
                   <a href="#" target="_blank"><button class="btn btn-primary" type="button">
                     <i class="fa fa-print"> Cetak Data </i></button></a>
                  <br><br>
+                 <!-- peringatan stok -->
+                 @foreach ($data as $produk => $item)
+                    @if($item->stok <= 3)
+                        <script>
+                         $(document).ready(function(){
+                          $('#pesan_sedia').css("color","red");
+                          $('#pesan_sedia').append("<span class='glyphicon glyphicon-asterisk'></span>");
+                        });
+                      </script>
+                      <?php
+                      
+                      echo "<div style='padding:5px' class='alert alert-warning'><span class='glyphicon glyphicon-info-sign'></span> Stok <a style='color:red'>".$item->nama_produk."</a> yang tersisa kurang dari 3. Silahkan cek dan tambah stok lagi </div>";
+                      ?>
+                      @endif
+                 @endforeach
                 
                   <div class="table-responsive">
                     <table class="table table-bordered data-table">
@@ -42,28 +57,28 @@
                         $no = 1;
                         ?>
                         
-                        @foreach ($produks as $produk)
+                        @foreach ($data as $produk => $item)
                         <tr>
-                            <td>{{$no++}}</td>
-                            <td>{{$produk->nama_produk}}</td>
-                            <td>{{$produk->kategori}}</td>
-                            <td>{{$produk->stok}} 
+                            <td>{{$data->firstItem() + $produk}}</td>
+                            <td>{{$item->nama_produk}}</td>
+                            <td>{{$item->nama_kategori}}</td>
+                            <td>{{$item->stok}} 
 
                             <!-- Label belakang -->
-                            @if ($produk->kategori == "Buah")
+                            @if ($item->kategori == "Buah")
                             buah
-                            @elseif ($produk->kategori == "Sayur")
+                            @elseif ($item->kategori == "Sayur")
                             ikat
                             @endif
 
 
                             </td>
-                            <td>{{$produk->beratisi_produk}} kg</td>
-                            <td>Rp. {{number_format($produk->harga_produk)}}</td>
+                            <td>{{$item->beratisi_produk}} kg</td>
+                            <td>Rp. {{number_format($item->harga_produk)}}</td>
                             <td>
-                                <img src="{{ url('uploads') }}/{{ $produk->foto_produk}}" width="40" >
+                                <img src="{{ url('uploads') }}/{{ $item->foto_produk}}" width="40" >
                             </td>
-                            <td>{{$produk->keterangan}}</td>
+                            <td>{{$item->keterangan}}</td>
 
                             <td>
                             <div class="btn-group">
@@ -84,7 +99,9 @@
 
                         </tbody>
                     </table>
-                   
+                    <div class="pull-right">
+                       {{ $data->links() }}
+                    </div>
                   </div>
                    
                  </form>
