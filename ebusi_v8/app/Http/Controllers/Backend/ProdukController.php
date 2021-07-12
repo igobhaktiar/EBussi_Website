@@ -2,19 +2,27 @@
 
 namespace App\Http\Controllers\Backend;
 use App\Models\Produk;
+use App\Models\KategoriProduk;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class ProdukController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index() {
-        $produks = Produk::get();
-        return view('backend.produk.index', compact('produks'));
-        }
-        public function create(){
-        $barang_produks = Produk::all();
-        return view('backend.produk.create', compact('barang_produks'));
-        }
+    $produks = Produk::get();
+    return view('backend.produk.index', compact('produks'));
+    }
+
+    public function create(){
+    $kategori = KategoriProduk::all();
+    $produks = null;
+    return view('backend.produk.create', compact('kategori'));
+    }
 
         public function store(Request $request){
             $input = $request->all();
