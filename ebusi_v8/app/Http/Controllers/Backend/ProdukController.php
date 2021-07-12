@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 use App\Models\Produk;
 use App\Models\KategoriProduk;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -14,8 +15,10 @@ class ProdukController extends Controller
     }
 
     public function index() {
-    $produks = Produk::get();
-    return view('backend.produk.index', compact('produks'));
+        $data = DB::table('kategori_produks')
+        ->join('produks', 'produks.kategori', '=', 'kategori_produks.id')
+        ->simplePaginate(10);
+        return view('backend.produk.index')->with('data', $data);
     }
 
     public function create(){
