@@ -35,6 +35,7 @@ Route::get('create', [App\Http\Controllers\Backend\ProdukController::class, 'cre
 Route::post('store', [App\Http\Controllers\Backend\ProdukController::class, 'store']);
 Route::get('edit/{id}', [App\Http\Controllers\Backend\ProdukController::class, 'edit']);
 Route::post('edit/{id}', [App\Http\Controllers\Backend\ProdukController::class, 'update']);
+Route::delete('destroy/{id}', [App\Http\Controllers\Backend\ProdukController::class, 'delete']);
 
 // USER - Data Profile
 Route::get('profile', [App\Http\Controllers\ProfileController::class, 'index']);
