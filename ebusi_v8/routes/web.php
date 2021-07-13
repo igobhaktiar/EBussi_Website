@@ -59,3 +59,4 @@ Route::post('profile', [App\Http\Controllers\ProfileController::class, 'update']
 Route::get('pesan/{id}', [App\Http\Controllers\PesanController::class, 'index']);
 Route::post('pesan/{id}', [App\Http\Controllers\PesanController::class, 'pesan']);
 Route::get('check-out', [App\Http\Controllers\PesanController::class, 'check_out']);
+Route::delete('check-out/{id}', [App\Http\Controllers\PesanController::class, 'delete']);
