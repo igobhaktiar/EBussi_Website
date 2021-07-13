@@ -29,6 +29,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{url('index-read')}}">Data Produk</a>
                 <a class="collapse-item" href="{{url('kategori-index')}}">Data Kategori Produk</a>
+                <a class="collapse-item" href="{{url('index-pembelian')}}">Data Pembelian</a>
                 </div>
             
         </div>
