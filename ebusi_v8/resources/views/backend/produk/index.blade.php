@@ -85,7 +85,7 @@
                             <a class="btn btn-warning btn-sm" href="{{url('edit')}}/{{$item->id}}">
                                     <i class="fa fa-edit"></i></a>
 
-                            <form action="" method="post" class="form-inline">
+                            <form action="{{url('destroy')}}/{{$item->id}}" method="post" class="form-inline">
                             @csrf
                             {{ method_field('DELETE') }}
                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin akan menghapus data?');">
