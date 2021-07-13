@@ -80,3 +80,5 @@ Route::get('history/{id}', [App\Http\Controllers\HistoryController::class, 'deta
 
 // ADMIN - DATA PEMBELIAN
 Route::get('index-pembelian', [App\Http\Controllers\Backend\DataPembelianController::class, 'index']);
+Route::get('detail-pembelian/{id}', [App\Http\Controllers\Backend\DataPembelianController::class, 'detail']);
+// Route::get('edit-status/{id}', [App\Http\Controllers\Backend\DataPembelianController::class, 'edit']);

@@ -29,4 +29,27 @@ class DataPembelianController extends Controller
                 ->simplePaginate(10);
         return view('backend.data_pembelian.index')->with('data', $data);
     }
+
+    public function detail($id){
+
+
+        $pesananDetail[] = [DB::table('pesanan_details')
+            ->Join(
+                'produks',
+                'pesanan_details.produk_id',
+                '=',
+                'produks.id',)
+                ->where('pesanan_details.pesanan_id', '=', $id)
+            ->get()];
+               
+        $dataUser = DB::table('users')
+                ->join('pesanans', 'pesanans.user_id', '=', 'users.id')
+                ->where('pesanans.id', '=', $id)
+                ->get();
+    //    dd($pesananDetail);
+        return view('backend.data_pembelian.detail',[
+            'pesananDetail' => $pesananDetail,
+            'dataUser' => $dataUser,
+        ]);
+    }
 }
