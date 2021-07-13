@@ -82,3 +82,6 @@ Route::get('history/{id}', [App\Http\Controllers\HistoryController::class, 'deta
 Route::get('index-pembelian', [App\Http\Controllers\Backend\DataPembelianController::class, 'index']);
 Route::get('detail-pembelian/{id}', [App\Http\Controllers\Backend\DataPembelianController::class, 'detail']);
 // Route::get('edit-status/{id}', [App\Http\Controllers\Backend\DataPembelianController::class, 'edit']);
+Route::post('edit-status/{id}', [App\Http\Controllers\Backend\DataPembelianController::class, 'update']);
+// Route::get('store-status/{id}', [App\Http\Controllers\Backend\DataPembelianController::class, 'store']);
+Route::get('cetak-pembelian', [App\Http\Controllers\Backend\DataPembelianController::class, 'cetak']);
