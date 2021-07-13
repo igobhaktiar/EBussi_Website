@@ -105,7 +105,23 @@
                             </li>
                         @endguest
                             
-                            </div>                             
+                            </div>
+                           
+                            <?php 
+                            $pesanan_utama = \App\Models\Pesanan::where('user_id', Auth::user()->id)->where ('status', 0)->first();
+
+                            if(!empty($pesanan_utama)){
+                                $notif = \App\Models\PesananDetail::where('pesanan_id', $pesanan_utama->id)->count();
+                            }
+                          
+                           ?>
+                                <a class="icon-cart" href="{{ url('check-out') }}">
+                                    <i class="pe-7s-shopbag"></i>
+                                    @if(!empty($notif))
+                                        <span class="badge badge-danger">{{ $notif }}</span>
+                                        @endif
+                                </a>
+                               
                               
                               
                             
