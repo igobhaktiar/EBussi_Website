@@ -117,4 +117,13 @@ class ProdukController extends Controller
             // $produks->update($request->all());
             // 
         }
+        // hapus
+    public function delete($id){
+        // return "delete";
+        $produk = Produk::where('id', $id)->first();
+        $produk->delete();
+        alert()->success('Data Produk berhasil dihapus', 'Success');
+        return redirect('index-read');
+        // return redirect('index-read')->with('success', 'Data Produk berhasil dihapus');
+    }
 }
