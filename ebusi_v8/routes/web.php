@@ -29,6 +29,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // ADMIN
 Route::get('dashboard', [App\Http\Controllers\Backend\DashboardController::class, 'index']);
 
+// ADMIN - Kelola Data User
+Route::get('user-index', [App\Http\Controllers\Backend\DataUserController::class, 'index']);
+
 // ADMIN - Data Produk
 Route::get('index-read', [App\Http\Controllers\Backend\ProdukController::class, 'index']);
 Route::get('create', [App\Http\Controllers\Backend\ProdukController::class, 'create']);
