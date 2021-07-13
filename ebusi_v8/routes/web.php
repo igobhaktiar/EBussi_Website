@@ -37,6 +37,13 @@ Route::get('edit/{id}', [App\Http\Controllers\Backend\ProdukController::class, '
 Route::post('edit/{id}', [App\Http\Controllers\Backend\ProdukController::class, 'update']);
 Route::delete('destroy/{id}', [App\Http\Controllers\Backend\ProdukController::class, 'delete']);
 
+//ADMIN - Profil Admin
+Route::get('profile-admin', [App\Http\Controllers\Backend\ProfilAdminController::class, 'index']);
+Route::post('profile-admin', [App\Http\Controllers\Backend\ProfilAdminController::class, 'update']);
+
+Route::get('admin/dashboard', [App\Http\Controllers\Backend\DashboardController::class, 'index'])->name('admin.dashboard')->middleware('is_admin');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 // USER - Data Profile
 Route::get('profile', [App\Http\Controllers\ProfileController::class, 'index']);
 Route::post('profile', [App\Http\Controllers\ProfileController::class, 'update']);
