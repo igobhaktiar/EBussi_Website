@@ -52,4 +52,13 @@ class DataPembelianController extends Controller
             'dataUser' => $dataUser,
         ]);
     }
+
+    public function update(Request $request, $id){
+        $pembelian = Pesanan::where('id', $id)->first();
+        $pembelian->update([
+            'status' => $request->status
+        ]);
+        alert()->success('Status berhasil diubah', 'Success');
+        return redirect('index-pembelian');
+    }
 }
