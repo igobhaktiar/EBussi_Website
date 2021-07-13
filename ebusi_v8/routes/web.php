@@ -33,6 +33,8 @@ Route::get('dashboard', [App\Http\Controllers\Backend\DashboardController::class
 Route::get('index-read', [App\Http\Controllers\Backend\ProdukController::class, 'index']);
 Route::get('create', [App\Http\Controllers\Backend\ProdukController::class, 'create']);
 Route::post('store', [App\Http\Controllers\Backend\ProdukController::class, 'store']);
+Route::get('edit/{id}', [App\Http\Controllers\Backend\ProdukController::class, 'edit']);
+Route::post('edit/{id}', [App\Http\Controllers\Backend\ProdukController::class, 'update']);
 
 // USER - Data Profile
 Route::get('profile', [App\Http\Controllers\ProfileController::class, 'index']);
