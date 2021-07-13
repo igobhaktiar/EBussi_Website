@@ -62,3 +62,7 @@ Route::get('check-out', [App\Http\Controllers\PesanController::class, 'check_out
 Route::delete('check-out/{id}', [App\Http\Controllers\PesanController::class, 'delete']);
 Route::get('keranjangcheckout', [App\Http\Controllers\PesanController::class, 'keranjanglanjut']);
 Route::get('konfirmasi-check-out', [App\Http\Controllers\PesanController::class, 'konfirmasi']);
+
+// USER - History
+Route::get('history', [App\Http\Controllers\HistoryController::class, 'index']);
+Route::get('history/{id}', [App\Http\Controllers\HistoryController::class, 'detail']);
