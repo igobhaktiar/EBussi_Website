@@ -82,7 +82,7 @@
 
                             <td>
                             <div class="btn-group">
-                            <a class="btn btn-warning btn-sm" href="#">
+                            <a class="btn btn-warning btn-sm" href="{{url('edit')}}/{{$item->id}}">
                                     <i class="fa fa-edit"></i></a>
 
                             <form action="#" method="post" class="form-inline">

@@ -57,4 +57,64 @@ class ProdukController extends Controller
             
                           
         }
+
+        //Edit
+        public function edit($id){
+            $kategori = KategoriProduk::all();
+            $produks = Produk::find($id);
+            return view('backend.produk.edit', compact('produks'));
+            // $produks = Produk::where('id', $id)->first();
+            // return view('backend.produk.create', compact('produks'));
+        }
+    
+        public function update(Request $request, $id){
+    
+            $request->validate([
+                'nama_produk' => 'required|string|max:30',
+                'stok' => 'required',
+                'beratisi_produk' => 'required',
+                'harga_produk' => 'required',
+                'foto_produk' => 'image',
+                'keterangan' => 'required|string',          
+            ]);
+    
+            $param = $request->all();
+            $data = [
+                'nama_produk' => $param['nama_produk'],
+                'kategori'  => $param['kategori'],
+                'stok' => $param['stok'],
+                'beratisi_produk' => $param['beratisi_produk'],
+                'harga_produk' => $param['harga_produk'],
+                'keterangan' => $param['keterangan'],
+            ];
+    
+    
+            $foto_produk = $request->file('foto_produk');
+    
+            // kalau pas ada edit foto, laksanakan
+            // yok bisa yok
+    
+            if($foto_produk){
+            $imgName = $request->foto_produk->getClientOriginalName() . '-' . time() 
+                . '.' .   $request->foto_produk->extension();
+                $data['foto_produk'] = $imgName;
+                
+            $request->foto_produk->move(public_path('uploads'), $imgName);
+            }
+    
+            try{
+                $produk = Produk::where('id', $id)->first();
+                $produk->update($data);
+                alert()->success('Data Produk berhasil diubah', 'Success');
+                return redirect('index-read');
+            } catch (\Exception $e){
+                alert()->success('Data Produk gagal diubah', 'Error');
+                return redirect('index-read');
+            }
+            
+            // return redirect('index-read')->with('success', 'Data Produk berhasil diubah');
+            
+            // $produks->update($request->all());
+            // 
+        }
 }
