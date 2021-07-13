@@ -36,6 +36,7 @@ Route::post('store', [App\Http\Controllers\Backend\ProdukController::class, 'sto
 Route::get('edit/{id}', [App\Http\Controllers\Backend\ProdukController::class, 'edit']);
 Route::post('edit/{id}', [App\Http\Controllers\Backend\ProdukController::class, 'update']);
 Route::delete('destroy/{id}', [App\Http\Controllers\Backend\ProdukController::class, 'delete']);
+Route::get('cetak-produk', [App\Http\Controllers\Backend\ProdukController::class, 'cetak']);
 
 // ADMIN - Data Kategori Produk
 Route::get('kategori-index', [App\Http\Controllers\Backend\KategoriProdukController::class, 'index']);

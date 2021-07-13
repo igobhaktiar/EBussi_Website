@@ -19,7 +19,7 @@
 
                   <a href="{{ url('create') }}"><button class="btn btn-primary" type="button">
                     <i class="fa fa-plus"> Tambah </i></button></a>
-                  <a href="#" target="_blank"><button class="btn btn-primary" type="button">
+                    <a href="{{url('cetak-produk')}}" target="_blank"><button class="btn btn-primary" type="button">
                     <i class="fa fa-print"> Cetak Data </i></button></a>
                  <br><br>
                  <!-- peringatan stok -->
