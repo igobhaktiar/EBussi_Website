@@ -90,4 +90,16 @@ class PesanController extends Controller
        
         return view('pesan.check_out', compact('pesanan', 'pesanan_details'));
     }
+
+    public function delete($id){
+        $pesanan_detail = PesananDetail::where('id', $id)->first();
+
+        $pesanan = Pesanan::where('id', $pesanan_detail->pesanan_id)->first();
+        $pesanan->jumlah_harga = $pesanan->jumlah_harga-$pesanan_detail->jumlah_harga;
+        $pesanan->update();
+
+        $pesanan_detail->delete();
+        alert()->error('Pesanan Sukses Dihapus', 'Hapus');
+        return redirect('check-out');
+    }
 }
