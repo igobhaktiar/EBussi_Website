@@ -40,3 +40,4 @@ Route::post('profile', [App\Http\Controllers\ProfileController::class, 'update']
 
 //USER - Katalog Produk
 Route::get('pesan/{id}', [App\Http\Controllers\PesanController::class, 'index']);
+Route::post('pesan/{id}', [App\Http\Controllers\PesanController::class, 'pesan']);
