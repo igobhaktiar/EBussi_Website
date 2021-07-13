@@ -204,15 +204,15 @@
                         <!-- @if($produk->stok <= 3)
                         <div class="alert alert-warning" style="text-align: center;">Produk segera habis</div>
                         @endif -->
-                            <img src="{{ url('uploads') }}/{{ $produk->foto_produk}}" >
+                            <a href="{{ url ('pesan') }}/{{$produk->id}}"> <img src="{{ url('uploads') }}/{{ $produk->foto_produk}}" ></a>
                             <div class="product-furit-action">
                             <!-- Berikan kondisi untuk stok menggunakan if -->
-                                <a class="furit-animate-left" title="Add To Cart" href="{{ url ('keranjang_aksi') }}/{{$produk->id}}">
+                                <!-- <a class="furit-animate-left" title="Add To Cart" href="{{ url ('keranjang_aksi') }}/{{$produk->id}}">
                                     <i class="pe-7s-cart"></i>
                                 </a>
                                 <a class="furit-animate-right" title="Detail" href="{{ url ('pesan') }}/{{$produk->id}}">
                                     <i class="pe-7s-info"></i>
-                                </a>
+                                </a> -->
                             </div>
                         </div>
                         <div class="product-fruit-content text-center">
