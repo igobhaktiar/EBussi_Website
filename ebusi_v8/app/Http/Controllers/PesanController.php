@@ -91,6 +91,17 @@ class PesanController extends Controller
         return view('pesan.check_out', compact('pesanan', 'pesanan_details'));
     }
 
+    // ini lebih ke fungsi untuk ke api nya nyiapain alamt
+    public function keranjanglanjut(){
+        $pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status',0)->first();
+        $pesanan_details = [];
+        if(!empty($pesanan)){
+            $pesanan_details = PesananDetail::where('pesanan_id', $pesanan->id)->get();
+        }
+       
+        return view('pesan.keranjang', compact('pesanan', 'pesanan_details'));
+    }
+
     public function delete($id){
         $pesanan_detail = PesananDetail::where('id', $id)->first();
 
@@ -101,5 +112,35 @@ class PesanController extends Controller
         $pesanan_detail->delete();
         alert()->error('Pesanan Sukses Dihapus', 'Hapus');
         return redirect('check-out');
+    }
+
+     // Konfirmasi untuk checkout
+     public function konfirmasi(){
+        $user = User::where('id', Auth::user()->id)->first();
+     
+        if(empty($user->alamat)){
+            alert()->error('Lengkapi data pribadi anda', 'Error');
+            return redirect('profile');
+        }
+
+        if(empty($user->nohp)){
+            alert()->error('Lengkapi data pribadi anda', 'Error');
+            return redirect('profile');
+        }
+
+        $pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status',0)->first();
+
+        $pesanan_id = $pesanan->id;
+        $pesanan->status = 1;
+        $pesanan->update();
+
+        $pesanan_details = PesananDetail::where('pesanan_id', $pesanan_id)->get();
+        foreach($pesanan_details as $pesanan_detail){
+            $produk = Produk::where('id', $pesanan_detail->produk_id)->first();
+            $produk->stok = $produk->stok - $pesanan_detail->jumlah;
+            $produk->update();
+        }
+        alert()->success('Pesanan Sukses di Check Out', 'Success');
+        return redirect('history/'.$pesanan_id);
     }
 }

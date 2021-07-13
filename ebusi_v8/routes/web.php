@@ -60,3 +60,5 @@ Route::get('pesan/{id}', [App\Http\Controllers\PesanController::class, 'index'])
 Route::post('pesan/{id}', [App\Http\Controllers\PesanController::class, 'pesan']);
 Route::get('check-out', [App\Http\Controllers\PesanController::class, 'check_out']);
 Route::delete('check-out/{id}', [App\Http\Controllers\PesanController::class, 'delete']);
+Route::get('keranjangcheckout', [App\Http\Controllers\PesanController::class, 'keranjanglanjut']);
+Route::get('konfirmasi-check-out', [App\Http\Controllers\PesanController::class, 'konfirmasi']);
