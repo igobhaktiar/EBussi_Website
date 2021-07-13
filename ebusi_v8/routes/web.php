@@ -31,6 +31,13 @@ Route::get('dashboard', [App\Http\Controllers\Backend\DashboardController::class
 
 // ADMIN - Kelola Data User
 Route::get('user-index', [App\Http\Controllers\Backend\DataUserController::class, 'index']);
+Route::delete('hapus/{id}', [App\Http\Controllers\Backend\DataUserController::class, 'delete']);
+Route::get('tambah_user', [App\Http\Controllers\Backend\DataUserController::class, 'create']);
+Route::post('storeuser', [App\Http\Controllers\Backend\DataUserController::class, 'store']);
+Route::get('edituser/{id}', [App\Http\Controllers\Backend\DataUserController::class, 'edit'])->name('edituser.edit');
+Route::post('edituser/{id}', [App\Http\Controllers\Backend\DataUserController::class, 'update'])->name('edituser.update');
+Route::get('detail/{id}', [App\Http\Controllers\Backend\DataUserController::class, 'detail']);
+Route::get('cetak-user', [App\Http\Controllers\Backend\DataUserController::class, 'cetak_user']);
 
 // ADMIN - Data Produk
 Route::get('index-read', [App\Http\Controllers\Backend\ProdukController::class, 'index']);

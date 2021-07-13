@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
-use App\Models\User;
 use Alert;
 use DataTables;
+
 
 class DataUserController extends Controller
 {
@@ -21,7 +22,7 @@ class DataUserController extends Controller
         $data_user = DB::table('users')->simplePaginate(10);
         return view('backend.data_user.index', compact('data_user'));
     }
-    
+
     public function cetak_user(){
         $data_user_cetak = User::get();
         return view('backend.data_user.cetak_user', compact('data_user_cetak'));
@@ -124,5 +125,4 @@ class DataUserController extends Controller
         $detailuser = User::get();
         return view('backend.data_user.detail', compact('detailuser'));
     }
-
 }
