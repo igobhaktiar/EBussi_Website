@@ -37,6 +37,13 @@ Route::get('edit/{id}', [App\Http\Controllers\Backend\ProdukController::class, '
 Route::post('edit/{id}', [App\Http\Controllers\Backend\ProdukController::class, 'update']);
 Route::delete('destroy/{id}', [App\Http\Controllers\Backend\ProdukController::class, 'delete']);
 
+// ADMIN - Data Kategori Produk
+Route::get('kategori-index', [App\Http\Controllers\Backend\KategoriProdukController::class, 'index']);
+Route::get('tambah', [App\Http\Controllers\Backend\KategoriProdukController::class, 'tambah_kat']);
+Route::post('kat_store', [App\Http\Controllers\Backend\KategoriProdukController::class, 'store']);
+Route::delete('hapusy/{id}', [App\Http\Controllers\Backend\KategoriProdukController::class, 'delete']);
+
+
 //ADMIN - Profil Admin
 Route::get('profile-admin', [App\Http\Controllers\Backend\ProfilAdminController::class, 'index']);
 Route::post('profile-admin', [App\Http\Controllers\Backend\ProfilAdminController::class, 'update']);
