@@ -61,4 +61,11 @@ class DataPembelianController extends Controller
         alert()->success('Status berhasil diubah', 'Success');
         return redirect('index-pembelian');
     }
+
+    public function cetak(){
+        $data = DB::table('users')
+                ->join('pesanans', 'pesanans.user_id', '=', 'users.id')
+                ->get();
+        return view('backend.data_pembelian.cetak_beli')->with('data', $data);
+    }
 }
