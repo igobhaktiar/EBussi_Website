@@ -30,6 +30,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('dashboard', [App\Http\Controllers\Backend\DashboardController::class, 'index']);
 
 // ADMIN - Kelola Data User
+Route::get('users', [App\Http\Controllers\Backend\DataUserController::class, 'index'])->name('users.index');
 Route::get('user-index', [App\Http\Controllers\Backend\DataUserController::class, 'index']);
 Route::delete('hapus/{id}', [App\Http\Controllers\Backend\DataUserController::class, 'delete']);
 Route::get('tambah_user', [App\Http\Controllers\Backend\DataUserController::class, 'create']);
