@@ -126,4 +126,11 @@ class ProdukController extends Controller
         return redirect('index-read');
         // return redirect('index-read')->with('success', 'Data Produk berhasil dihapus');
     }
+
+    public function cetak(){
+        $data_cetak = DB::table('kategori_produks')
+        ->join('produks', 'produks.kategori', '=', 'kategori_produks.id')
+        ->get();
+        return view('backend.produk.cetak_produk')->with('data_cetak', $data_cetak);
+    }
 }
