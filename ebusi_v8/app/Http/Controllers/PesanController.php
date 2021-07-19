@@ -30,7 +30,7 @@ class PesanController extends Controller
         //ini sudah berfungsi
         //tpi kalau untuk misalnya di keranjang udh ada 7 tpi pas di tmbh lagi 4 itu ga bisa woy
         // masihh ke save. keadaan stoknya 10. kalau bingung, coba jalani aja.
-        if($request->jumlah_pesan >= $produk->stok){
+        if($request->jumlah_pesan > $produk->stok){
             alert()->warning('Jumlah produk melebihi stok, periksa keranjang anda', 'Warning');
             return redirect('pesan/'.$id);
         }

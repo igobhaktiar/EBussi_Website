@@ -19,7 +19,7 @@ class HistoryController extends Controller
     }
 
     public function index(){
-        $pesanans = Pesanan::where('user_id', Auth::user()->id)->where('status', '!=', 0)->get();
+        $pesanans = Pesanan::where('user_id', Auth::user()->id)->where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
         return view('history.index', compact('pesanans'));
     }
 
