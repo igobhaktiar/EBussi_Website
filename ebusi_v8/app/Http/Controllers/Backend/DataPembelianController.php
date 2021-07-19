@@ -26,6 +26,7 @@ class DataPembelianController extends Controller
         // return view('backend.data_pembelian.index', compact('pembelians', 'users'));
         $data = DB::table('users')
                 ->join('pesanans', 'pesanans.user_id', '=', 'users.id')
+                ->orderBy('tanggal_pesanan', 'desc')
                 ->simplePaginate(10);
         return view('backend.data_pembelian.index')->with('data', $data);
     }
