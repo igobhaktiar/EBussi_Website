@@ -17,8 +17,8 @@
                  <form method="post">
                   <h5 class="m-0 font-weight-bold text-primary">Data Pengguna</h5><hr>
 
-                  <a href="{{url('tambah_user')}}"><button class="btn btn-primary" type="button">
-                    <i class="fa fa-plus"> Tambah </i></button></a>
+                  <!-- <a href="{{url('tambah_user')}}"><button class="btn btn-primary" type="button">
+                    <i class="fa fa-plus"> Tambah </i></button></a> -->
                     <a href="{{url('cetak-user')}}" target="_blank"><button class="btn btn-primary" type="button">
                     <i class="fa fa-print"> Cetak Data </i></button></a>
                     <!-- <div class="row">
