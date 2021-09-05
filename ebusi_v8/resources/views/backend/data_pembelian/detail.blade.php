@@ -96,7 +96,7 @@
                     @if($dataUser[0]->status == 3)
                     <div class="form-group">
                               <select class="form-control" name="status" disabled>
-                                <option value="">Perbarui Status</option>
+                                <option value="1">Perbarui Status</option>
                                 <option value="2">Diproses</option>
                                 <option value="3">Dikirim</option>
                               </select><hr>
@@ -107,7 +107,7 @@
                       @elseif ($dataUser[0]->status !== 3)
                       <div class="form-group">
                               <select class="form-control" name="status">
-                                <option value="">Perbarui Status</option>
+                                <option value="1">Perbarui Status</option>
                                 <option value="2">Diproses</option>
                                 <option value="3">Dikirim</option>
                               </select><hr>

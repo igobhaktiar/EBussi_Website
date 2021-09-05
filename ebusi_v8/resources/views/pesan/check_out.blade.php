@@ -197,7 +197,7 @@
                         <td>{{ $pesanan_detail->produk->nama_produk}}</td>
                         <td>
                         
-                        {{ $pesanan_detail->jumlah}} ikat</td>
+                        {{ $pesanan_detail->jumlah}}</td>
                         <td>Rp. {{ number_format($pesanan_detail->produk->harga_produk)}}</td>
                         <td>Rp. {{ number_format($pesanan_detail->jumlah_harga)}}</td>
                         <td>

@@ -47,7 +47,7 @@
                             <td>{{$item->tanggal_pesanan}}</td>
                             <td>
                             @if($item->status == 1)
-                            Menunggu Konfirmasi
+                            <label style="background-color: #FAEBD7;">Menunggu Konfirmasi</label>
                             @elseif ($item->status == 2)
                             Pesanan Diproses
                             @elseif ($item->status == 3)

@@ -69,7 +69,7 @@ class LoginController extends Controller
                 return redirect('/');
             }
         } else {
-            return redirect()->route('login')->with('error', 'Email dan Password salah');
+            return redirect()->route('login')->with('error', 'Username dan Password salah');
         }
 
     }

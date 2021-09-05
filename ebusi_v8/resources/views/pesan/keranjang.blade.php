@@ -230,7 +230,7 @@
                 @endif
                  
                     <div class="input-radio">
-                        <input type="radio" name="payment" id="payment-2" checked>
+                       
                         <label for="payment-2">
                             <span></span>
                             Cash On Delivery
